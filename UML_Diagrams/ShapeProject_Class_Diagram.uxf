@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>423</x>
+      <y>378</y>
+      <w>306</w>
+      <h>279</h>
+    </coordinates>
+    <panel_attributes>/hedlund.shape.drawing::Shape/
+--
+#profileLength: float
+#area: float
+#coordinate: Coord
+#type: ShapeType
+-elementId: int
+-uniqueId = 1: int
+--
+#Shape(ShapeType shapeType, Coord coord): ctor
++calcProfileLength(): void
++calcArea(): void
++withinDrawLim(Coord coord): boolean
++getProfileLength(): float
++getArea(): float
++getUniqueId(): int
++move(Coord newCoord): boolean
++checkCoord(Coord coord): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>441</x>
+      <y>81</y>
+      <w>279</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>hedlund.shape.drawing::ShapeApp
+--
+--
++main(String[] args): void
++addShapes(Drawing theDrawing): boolean
++removeShapes(Drawing theDrawing): boolean
++moveShapes(Drawing theDrawing): boolean
++printShapes(Drawing theDrawing): boolean
++getUserInput(): MainMenu
++getUserInputShape(): Shape.ShapeType
+-getUserInputInt(): int
+-getUserInputCoord(): Coord
++printGeometryData(Shape[] shapeArray): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>18</x>
+      <y>837</y>
+      <w>288</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>hedlund.shape.drawing::Triangle
+--
+~height: int
+~base: int
+--
++Triangle(): ctor
++Triangle(int height, int base): ctor
++Triangle(int height, int base, Coord coord): ctor
++calcProfileLength(): void
++calcArea(): void
++calcHyp(): float
++toString(): String
++withinDrawLim(Coord coord): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>585</x>
+      <y>837</y>
+      <w>252</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>hedlund.shape.drawing::Rectangle
+--
+-height: int
+-width: int
+--
++Rectangle(int h, int w): ctor
++Rectangle(): ctor
++Rectangle(int h, int w, Coord coord): ctor
++calcProfileLength(): void
++calcArea(): void
++toString(): String
++withinDrawLim(Coord coord): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>837</y>
+      <w>261</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>hedlund.shape.drawing::Circle
+--
+-radius: int
+--
++Circle(): ctor
++Circle(int r): ctor
++Circle(int r, Coord coord): ctor
++calcProfileLength(): void
++calcArea(): void
++toString(): String
++withinDrawLim(Coord newCoord): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>36</x>
+      <y>135</y>
+      <w>288</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>hedlund.shape.drawing::Drawing
+--
+~shapes = new Shape[MAX_SHAPES]: Shape[]
+--
++Drawing(Shape[] shapes): ctor
++Drawing(): ctor
++addShape(Shape shape): boolean
+-getEmptyIndex(): int
++removeShape(int id): boolean
++isFull(): boolean
++moveShape(int id, Coord newCoord): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>855</x>
+      <y>837</y>
+      <w>234</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>hedlund.shape.drawing::Line
+--
+-length: int
+--
++Line(): ctor
++Line(int length): ctor
++Line(int length, Coord coord): ctor
++calcProfileLength(): void
++calcArea(): void
++toString(): String
++withinDrawLim(Coord coord): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>900</x>
+      <y>333</y>
+      <w>270</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>hedlund.shape.drawing::ShapeConfig
+--
++DEFAULT_DIMENSION = 1: int
++DEFAULT_POSITION = new Coord(): Coord
++X_DRAW_MIN = 0: int
++Y_DRAW_MIN = 0: int
++X_DRAW_MAX = 600: int
++Y_DRAW_MAX = 400: int
++MAX_SHAPES = 10: int
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>900</x>
+      <y>540</y>
+      <w>189</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>hedlund.shape.drawing::Coord
+--
+-X: int
+-Y: int
+--
++Coord(int x, int y): ctor
++Coord(): ctor
++getX(): int
++getY(): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>153</x>
+      <y>648</y>
+      <w>441</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>470.0;10.0;470.0;110.0;10.0;110.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>648</y>
+      <w>180</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;180.0;110.0;180.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>648</y>
+      <w>162</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;160.0;110.0;10.0;110.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>648</y>
+      <w>459</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;490.0;110.0;490.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>540</y>
+      <w>198</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0;120.0;70.0;200.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>387</y>
+      <w>198</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;120.0;10.0;120.0;50.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>747</x>
+      <y>432</y>
+      <w>72</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Uses&gt;&gt;
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>864</x>
+      <y>576</y>
+      <w>27</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>297</y>
+      <w>27</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>585</x>
+      <y>333</y>
+      <w>72</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Uses&gt;&gt;
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>315</x>
+      <y>216</y>
+      <w>144</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>360</x>
+      <y>198</y>
+      <w>63</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Uses&gt;&gt;
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
