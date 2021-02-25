@@ -43,7 +43,7 @@ public class Line extends Shape {
 		sb.append(", profileLength=");
 		sb.append(super.getProfileLength());
 		sb.append(", uniqueId=");
-		sb.append(this.getUniqueId());
+		sb.append(this.getElementId());
 		sb.append(", Coordinate=");
 		sb.append(coordinate.getX());
 		sb.append(",");

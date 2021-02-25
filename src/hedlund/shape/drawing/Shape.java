@@ -10,7 +10,7 @@ package hedlund.shape.drawing;
 
 import static hedlund.shape.drawing.ShapeConfig.*;
 
-public abstract class Shape {
+public abstract class Shape implements Comparable<Shape> {
 
 	public enum ShapeType {
 		Triangle,
@@ -59,7 +59,7 @@ public abstract class Shape {
 	}
 
 	// present area of object
-	public int getUniqueId(){
+	public int getElementId(){
 		return elementId;
 	}
 
@@ -88,6 +88,11 @@ public abstract class Shape {
 		}
 
 		return true;	
+	}
+	
+	@Override
+	public int compareTo(Shape that) {
+		return (this.elementId - that.getElementId());
 	}
 
 

@@ -1,9 +1,13 @@
 package hedlund.shape.drawing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
-public class TestShapeDrawing {
+public class TestDrawing {
 
 	
 	@Test //adding a shape successfully
@@ -11,9 +15,10 @@ public class TestShapeDrawing {
 		Drawing tempDrawing = new Drawing();
 		Circle tempCircle = new Circle(1,new Coord());
 		tempDrawing.addShape(tempCircle);
-		Assert.assertNotNull(tempDrawing.shapes[0]);
+		Assert.assertNotNull(tempDrawing.shapes.get(0));
 	}
 	
+	@Ignore //not needed anymore due to List<Shape>
 	@Test //adding to many shapes
 	public void testAddShape2() {
 		Drawing tempDrawing = new Drawing();
@@ -26,6 +31,7 @@ public class TestShapeDrawing {
 		Assert.assertFalse(tempDrawing.addShape(oneToMuchCircle));
 	}
 	
+	@Ignore //Test no longer needed due to refactor from Array to List<Shape>
 	@Test //adding 10 shapes and testing isFull()
 	public void testAddShape3() {
 		Drawing tempDrawing = new Drawing();
@@ -34,9 +40,10 @@ public class TestShapeDrawing {
 			Circle circle = new Circle();
 			tempDrawing.addShape(circle);
 		}
-		Assert.assertTrue(tempDrawing.isFull());
+		//Assert.assertTrue(tempDrawing.isFull());
 	}
 	
+	@Ignore //Test no longer needed due to refactor from Array to List<Shape>
 	@Test //adding 8 shapes and testing isFull()
 	public void testAddShape4() {
 		Drawing tempDrawing = new Drawing();
@@ -46,7 +53,7 @@ public class TestShapeDrawing {
 			tempDrawing.addShape(circle);
 		}
 		
-		Assert.assertFalse(tempDrawing.isFull());
+		//Assert.assertFalse(tempDrawing.isFull());
 	}
 	
 	@Test //Remove existing shape
@@ -54,8 +61,8 @@ public class TestShapeDrawing {
 		Drawing tempDrawing = new Drawing();
 		Circle tempCircle = new Circle(1,new Coord());
 		tempDrawing.addShape(tempCircle);
-		Assert.assertTrue(tempDrawing.removeShape(tempCircle.getUniqueId()));
-		Assert.assertNull(tempDrawing.shapes[0]);
+		Assert.assertTrue(tempDrawing.removeShape(tempCircle.getElementId()));
+		//Assert.assertNull(tempDrawing.shapes.get(0));
 	}
 	
 	@Test //Remove non existing shape
@@ -74,7 +81,7 @@ public class TestShapeDrawing {
 		Circle tempCircle = new Circle();
 		tempDrawing.addShape(tempCircle);
 		
-		Assert.assertTrue(tempDrawing.moveShape(tempCircle.getUniqueId(), new Coord()));
+		Assert.assertTrue(tempDrawing.moveShape(tempCircle.getElementId(), new Coord()));
 	}
 	
 	@Test //move a existing shape to faulty location
@@ -83,7 +90,7 @@ public class TestShapeDrawing {
 		Circle tempCircle = new Circle();
 		tempDrawing.addShape(tempCircle);
 		
-		Assert.assertFalse(tempDrawing.moveShape(tempCircle.getUniqueId(), new Coord(600,50)));
+		Assert.assertFalse(tempDrawing.moveShape(tempCircle.getElementId(), new Coord(600,50)));
 	}
 	
 	@Test //move a non existing shape to ok location
@@ -98,7 +105,11 @@ public class TestShapeDrawing {
 	
 	@Test //Creating drawing with drawing supplied as argument
 	public void testCreateDrawing() {
-		Shape[] shapes = {new Circle(),new Triangle(),new Rectangle(),new Line()};
+		List<Shape> shapes = new ArrayList<Shape>();
+		shapes.add(new Circle());
+		shapes.add(new Triangle());
+		shapes.add(new Rectangle());
+		shapes.add(new Line());
 		Drawing tempDrawing = new Drawing(shapes);
 		Assert.assertNotNull(tempDrawing.shapes);
 	}

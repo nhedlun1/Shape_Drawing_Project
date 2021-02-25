@@ -60,7 +60,7 @@ public class TestShapeCircle {
 	@Test 
 	public void testToStringCircle9() {
 		Circle temp = new Circle(5, new Coord(5,5));
-		int uniqueId = temp.getUniqueId();
+		int uniqueId = temp.getElementId();
 		assertEquals("Circle [radius=5, profileLength=31.415926, area=78.53982, uniqueId="+uniqueId+", Coordinate=5,5]", temp.toString());
 	}
 

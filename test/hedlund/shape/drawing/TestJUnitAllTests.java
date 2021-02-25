@@ -11,7 +11,8 @@ import org.junit.runners.Suite.SuiteClasses;
 		TestShapeRectangle.class,
 		TestShapeTriangle.class,
 		TestShapeLine.class,
-		TestShapeDrawing.class,
+		TestDrawing.class,
+		TestCoord.class,
 
 	}
 )

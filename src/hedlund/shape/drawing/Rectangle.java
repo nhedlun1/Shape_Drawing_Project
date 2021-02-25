@@ -69,7 +69,7 @@ public class Rectangle extends Shape{
 		sb.append(", area=");
 		sb.append(super.getArea());
 		sb.append(", uniqueId=");
-		sb.append(this.getUniqueId());
+		sb.append(this.getElementId());
 		sb.append(", Coordinate=");
 		sb.append(coordinate.getX());
 		sb.append(",");

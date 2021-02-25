@@ -54,7 +54,7 @@ public class TestShapeLine {
 	@Test
 	public void testToStringLine8() {
 		Line temp = new Line(5, new Coord(10,10));
-		int uniqueId = temp.getUniqueId();
+		int uniqueId = temp.getElementId();
 		assertEquals("Line [Length=5, profileLength=5.0, uniqueId="+uniqueId+", Coordinate=10,10]", temp.toString());
 	}
 	

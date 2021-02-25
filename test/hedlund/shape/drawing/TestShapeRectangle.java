@@ -48,7 +48,7 @@ public class TestShapeRectangle {
 	@Test 
 	public void testToStringRectangle7() {
 		Rectangle temp = new Rectangle(5,5, new Coord(1,1));
-		int uniqueId = temp.getUniqueId();
+		int uniqueId = temp.getElementId();
 		assertEquals("Rectangle [height=5, width=5, profileLength=20.0, area=25.0, uniqueId="+uniqueId+", Coordinate=1,1]", temp.toString());
 	} 
 	

@@ -2,71 +2,67 @@ package hedlund.shape.drawing;
 
 import static hedlund.shape.drawing.ShapeConfig.*;
 
+import java.util.List;
+
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public class Drawing {
 
-	Shape[] shapes = new Shape[MAX_SHAPES];
+	//Shape[] shapes = new Shape[MAX_SHAPES];
+	List<Shape> shapes;
 
-
-	public Drawing(Shape[] shapes) {
+	public Drawing(List<Shape> shapes) {
 		this.shapes = shapes;
 	}
 
 	//Default constructor
-	public Drawing() {}
+	public Drawing() {
+		this.shapes = new ArrayList<Shape>();
+	}
 
 
 	public boolean addShape(Shape shape)  {
-		int tempIndex = getEmptyIndex();
-
-		if(tempIndex != -1) {
-			shapes[tempIndex]=shape;
-			return true;
-		}else {
-			return false;
-		}
+		return shapes.add(shape);
 	}
 
 
-	private int getEmptyIndex() {
-		for(int i=0;i<shapes.length;i++) {
-			if (shapes[i]==null) {
-				return i;
-			}
-		}
-		return -1;
-	}
 	
 	public boolean removeShape(int id) {
-		for(int i=0;i<this.shapes.length;i++) {
-			if(shapes[i] !=null && id==shapes[i].getUniqueId()) {
-				shapes[i]=null;
+		Iterator<Shape> iter = shapes.iterator();
+		while(iter.hasNext()) {
+			Shape temp = iter.next();
+			if(temp.getElementId()==id) {
+				iter.remove();
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public boolean isFull() {
-		if(getEmptyIndex()==-1) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
 
-	public boolean moveShape(int id, Coord newCoord) {	//TODO: maybe throw an error if the shape.move method returns false so to separate failing reason.
-		for(int i=0;i<this.shapes.length;i++) {
-			if(shapes[i] !=null && id==shapes[i].getUniqueId()) {
-				if(!shapes[i].move(newCoord)) {
-					return false;
-				}else {
-					return true;
-				}
+	public boolean moveShape(int id, Coord newCoord) {
+		
+		for(int i=0;i<shapes.size();i++) {
+			if(shapes.get(i).getElementId()==id) {
+				Shape temp = shapes.get(i);
+				return temp.move(newCoord);
 			}
 		}
 		return false;
+	}
+	
+	public void printShapes() {	
+		StringBuilder sb = new StringBuilder();
+		sb.append("Shapes:\n");
+
+		for(Shape aShape: this.shapes) {
+			sb.append(aShape.toString());
+			sb.append("\n");
+		}
+		System.out.println(sb.toString());
 	}
 
 }

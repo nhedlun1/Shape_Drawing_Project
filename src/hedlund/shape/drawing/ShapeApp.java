@@ -61,7 +61,7 @@ public class ShapeApp {
 				break;
 
 			case PrintShapes:
-				printShapes(myDrawing);
+				myDrawing.printShapes();
 				mainMenu = MainMenu.Main;
 				break;
 
@@ -85,10 +85,10 @@ public class ShapeApp {
 		Shape.ShapeType tempType = null;
 		boolean ok = false;
 
-		if(theDrawing.isFull()) {
-			System.out.println("Cannot add another shape, drawing is full!");
-			return false;
-		}
+//		if(theDrawing.isFull()) {
+//			System.out.println("Cannot add another shape, drawing is full!"); //TODO: Clean this out if tests are successful
+//			return false;
+//		}
 
 		do {
 			try {
@@ -168,7 +168,7 @@ public class ShapeApp {
 
 
 	public static boolean removeShapes(Drawing theDrawing) {
-		printShapes(theDrawing);
+		theDrawing.printShapes();
 		int idToDel = -1;
 		try {
 			idToDel = getUserInputInt("Enter the id of the shape you want to remove or enter X to go back");
@@ -188,7 +188,7 @@ public class ShapeApp {
 
 
 	public static boolean moveShapes(Drawing theDrawing) {
-		printShapes(theDrawing);
+		theDrawing.printShapes();
 		int idToMov = -1;
 		try {
 			idToMov = getUserInputInt("Enter the id of the shape you want to move or enter X to go back");
@@ -210,13 +210,6 @@ public class ShapeApp {
 
 
 
-	public static boolean printShapes(Drawing theDrawing) {
-		printGeometryData(theDrawing.shapes);
-		return false;
-	}
-
-
-
 	public static MainMenu getUserInput() {
 		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
@@ -228,7 +221,7 @@ public class ShapeApp {
 			System.out.println("Invalid menu choice, only digits 1-5 allowed!");
 		}
 		if(tempInt <=0 || tempInt >5) {
-			System.out.println("Invalid menu choice, only digits 1-5 allowed!"); //TODO: Push exceptions further up the call chain!
+			System.out.println("Invalid menu choice, only digits 1-5 allowed!"); //TODO: Push exceptions further up the call chain
 		}
 		switch(tempInt) {
 		case 1:
@@ -335,20 +328,7 @@ public class ShapeApp {
 	}
 
 
-	/**
-	 * A general output method for type Shape
-	 * @param shapeArray holding the objects to present
-	 */
-	public static void printGeometryData(Shape[] shapeArray){
 
-		System.out.println("Shape objects in array:");
-		for(int i=0; i<shapeArray.length; i++){
-			if(shapeArray[i]!=null) {
-				System.out.println(shapeArray[i].toString());
-			}
-		}
-		System.out.println();
-	}	
 
 
 }	

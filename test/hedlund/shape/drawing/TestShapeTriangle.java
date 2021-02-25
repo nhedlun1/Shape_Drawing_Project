@@ -48,7 +48,7 @@ public class TestShapeTriangle {
 	@Test
 	public void testToStringTriangle7() {
 		Triangle temp = new Triangle(5,5, new Coord(10,10));
-		int uniqueId = temp.getUniqueId();
+		int uniqueId = temp.getElementId();
 		assertEquals("Triangle [Hypotenusa=7.071068, profileLength=17.071068, area=12.5, uniqueId="+uniqueId+", Coordinate=10,10]", temp.toString());
 	} 
 	
