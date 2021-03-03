@@ -30,7 +30,16 @@ public class ShapeApp {
 		Drawing myDrawing = new Drawing();
 		MainMenu mainMenu = MainMenu.Main;
 		boolean exit = false;
+		
+		
+		// If there is a configuration file read it and apply configuration
+		if(args.length == 1) {
+				ShapeConfig.handleConfiguration(args[0]);
+		}
+		System.out.format("Current configuration: %n" + ShapeConfig.showConfiguration());
+		
 
+		
 		while(!exit) {
 
 			switch(mainMenu) {

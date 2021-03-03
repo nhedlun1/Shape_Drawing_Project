@@ -91,8 +91,6 @@ public class Coord implements Comparable<Coord>{
 		sb.append(this.X);
 		sb.append(",");
 		sb.append(this.Y);
-		sb.append("Hash:");
-		sb.append(this.hashCode());
 		sb.append(")");
 		return sb.toString();
 	}
