@@ -41,11 +41,7 @@ public abstract class Shape implements Comparable<Shape> {
 		this.type = shapeType;
 	}
 
-//	protected Shape(ShapeType type) { //TODO: maybe this can be removed? Is never used in tests? 
-//		this(type,new Coord());	
-//	}
-
-
+	
 	/*
 	 * @Return profile length of object
 	 */

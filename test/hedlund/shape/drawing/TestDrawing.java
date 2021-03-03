@@ -1,7 +1,8 @@
 package hedlund.shape.drawing;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -105,11 +106,18 @@ public class TestDrawing {
 	
 	@Test //Creating drawing with drawing supplied as argument
 	public void testCreateDrawing() {
-		List<Shape> shapes = new ArrayList<Shape>();
-		shapes.add(new Circle());
-		shapes.add(new Triangle());
-		shapes.add(new Rectangle());
-		shapes.add(new Line());
+		Map<Integer,Shape> shapes = new HashMap<Integer,Shape>();
+		
+		Circle c1 = new Circle();
+		Triangle t1 = new Triangle();
+		Rectangle r1 = new Rectangle();
+		Line l1 = new Line();
+		
+		shapes.putIfAbsent(c1.getElementId(),c1);
+		shapes.putIfAbsent(t1.getElementId(),t1);
+		shapes.putIfAbsent(r1.getElementId(),r1);
+		shapes.putIfAbsent(l1.getElementId(),l1);
+		
 		Drawing tempDrawing = new Drawing(shapes);
 		Assert.assertNotNull(tempDrawing.shapes);
 	}

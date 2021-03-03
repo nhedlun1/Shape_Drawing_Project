@@ -1,45 +1,53 @@
 package hedlund.shape.drawing;
 
-import static hedlund.shape.drawing.ShapeConfig.*;
-
-import java.util.List;
-
-
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashMap;
 import java.util.Iterator;
 
 
 public class Drawing {
 
-	//Shape[] shapes = new Shape[MAX_SHAPES];
-	List<Shape> shapes;
-
-	public Drawing(List<Shape> shapes) {
+//	Shape[] shapes = new Shape[MAX_SHAPES];
+//	List<Shape> shapes;
+	Map<Integer,Shape> shapes;
+	
+	public Drawing(Map<Integer,Shape> shapes) {
 		this.shapes = shapes;
 	}
 
 	//Default constructor
 	public Drawing() {
-		this.shapes = new ArrayList<Shape>();
+		this.shapes = new HashMap<Integer,Shape>();
 	}
 
 
 	public boolean addShape(Shape shape)  {
-		return shapes.add(shape);
+		if((shapes.putIfAbsent(shape.getElementId(), shape) == null)){
+			return true;
+		}
+		return false;
+		
 	}
 
 
 	
 	public boolean removeShape(int id) {
-		Iterator<Shape> iter = shapes.iterator();
-		while(iter.hasNext()) {
-			Shape temp = iter.next();
-			if(temp.getElementId()==id) {
-				iter.remove();
-				return true;
-			}
+		if((shapes.remove(id)!=null)) {
+			return true;
 		}
+		
 		return false;
+		
+//		Iterator<Integer> iter = shapes.iterator();
+//		while(iter.hasNext()) {
+//			Shape temp = iter.next();
+//			if(temp.getElementId()==id) {
+//				iter.remove();
+//				return true;
+//			}
+//		}
+//		return false;
 	}
 
 
@@ -56,13 +64,22 @@ public class Drawing {
 	
 	public void printShapes() {	
 		StringBuilder sb = new StringBuilder();
+		Set<Integer> keys = shapes.keySet();
+		
 		sb.append("Shapes:\n");
 
-		for(Shape aShape: this.shapes) {
-			sb.append(aShape.toString());
+		Iterator<Integer> shapeIter = keys.iterator();
+		
+		while(shapeIter.hasNext()) {
+			Integer currKey = shapeIter.next();
+			Shape currShape = shapes.get(currKey);
+			sb.append(currShape.toString());
 			sb.append("\n");
 		}
 		System.out.println(sb.toString());
 	}
 
+	
+	
+	
 }
